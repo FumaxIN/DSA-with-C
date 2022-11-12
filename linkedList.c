@@ -242,7 +242,7 @@ int reverse(){
             tempNode = tempNode->ptr;
         }
         temp1->ptr=NULL;
-        printf("count = %d",count);
+//        printf("count = %d",count);
         head = tempNode;
         tempNode->ptr=sl_node;
         sl_node=temp1;
@@ -269,19 +269,16 @@ int sort(){
     else{
         struct node *tempNode,*sl_node;
         int swapVar;
-        for(sl_node=head;sl_node->ptr!=NULL;){
+        for(sl_node=head;sl_node!=NULL;sl_node=sl_node->ptr){
             struct node *min = sl_node;
-            for(tempNode=sl_node->ptr;tempNode->ptr!=NULL;){
-                if(min->data>tempNode->data){
-                    min=tempNode;
+            for(tempNode=sl_node->ptr;tempNode!=NULL;tempNode=tempNode->ptr) {
+                if (min->data > tempNode->data) {
+                    min = tempNode;
                 }
-                swapVar=min->data;
-                min->data=sl_node->data;
-                sl_node->data=swapVar;
-
-                tempNode=tempNode->ptr;
             }
-            sl_node=sl_node->ptr;
+                swapVar=sl_node->data;
+                sl_node->data=min->data;
+                min->data=swapVar;
         }
     }
 }
