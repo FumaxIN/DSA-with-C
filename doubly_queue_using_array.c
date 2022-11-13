@@ -1,5 +1,5 @@
 #include "stdio.h"
-#define max 10
+#define max 5
 
 int push_rear();
 int push_front();
@@ -83,7 +83,7 @@ int push_rear(){
 
 int push_front(){
     int item,len;
-    if (Q.rear == max - 1 && Q.front==0) {
+    if ((Q.rear == max - 1 && Q.front==0) || (Q.front-Q.rear==1)) {
         printf("Overflowed");
     }
     else {
@@ -146,6 +146,3 @@ int display(){
             printf("%d\t", Q.a[i]);
     }
 }
-
-
-
